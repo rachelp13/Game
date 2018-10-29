@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="script.js"></script>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */
     .navbar {
@@ -24,11 +25,8 @@
       height: 100%;
     }
 
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
+    #main {
+    background-color: #666699;
     }
 
     /* On small screens, set height to 'auto' for sidenav and grid */
@@ -70,18 +68,29 @@
 <div class="container-fluid text-center">
   <div class="row content">
     <div class="text-center">
-      <h1>Game</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <hr>
-      <h3>Test</h3>
-      <p>Lorem ipsum...</p>
+      <div class="container contentContainer" id="main">
+         <div class="row center">
+            <h1 class="center title">GAME TITLE</h1>
+
+            <p class="lead">Created By: Rachel and Bradley Patterson</p>
+            <div id="container">
+               <canvas id="simCanvas" width="960" height="640"></canvas>
+            </div>
+
+            <h3 id="runResults">WINNER!</h3>
+            <button id="startButton" type="submit" class="btn btn-success">Start</button>
+            <button id="stopButton" type="submit" class="btn btn-danger">Stop</button>
+            <h3>Results:</h3>
+            <ul id="resultsList">
+
+            </ul>
+
+         </div>
+      </div>
     </div>
   </div>
 </div>
 
-<footer class="container-fluid text-center">
-  <p>Footer Text</p>
-</footer>
 
 </body>
 </html>
