@@ -1,5 +1,5 @@
 class Character {
-   constructor(name, lvl, npc, inventory, speed, id, ctx) {
+   constructor(name, lvl, npc, inventory, speed, id, ctx, color) {
       //The constructor is what makes the object.
       //Each time you want a new one, you need to call a constructor
       this.name = name;
@@ -11,6 +11,7 @@ class Character {
       this.speed = speed;
       this.id = id;
       this.ctx = ctx;
+      this.color = color;
    }
 
    draw() {
@@ -27,8 +28,8 @@ class Character {
    update() {
       //This is what "changes" the position of the character
       //This is also changed in the run loop
-      this.posX = this.posX + 1;
-      this.posY = this.posY + 1;
+      this.posX = this.posX + 1 * this.speed;
+      this.posY = this.posY + 1 * this.speed;
    }
 }
 
@@ -86,7 +87,8 @@ window.onload = function() {
 
    //makes a character using the contructor.
    //We could add an array to keep track of all of the characters
-   var char1 = new Character("brad", 1, false, false, 1, 123, ctx);
+   var char1 = new Character("brad", 1, false, false, 1, 123, ctx, "#4274f4");
+   var char2 = new Character("rachel", 1, true, false, 5, 13, ctx, "#ffb73a");
 
    //Console log is how you would print
    console.log("width = %d\n", canvasWidth);
@@ -110,6 +112,9 @@ window.onload = function() {
       //Draw and update the character
       char1.draw();
       char1.update();
+
+      char2.draw();
+      char2.draw();
    }
 
 
