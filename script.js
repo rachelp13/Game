@@ -28,8 +28,20 @@ class Character {
    update() {
       //This is what "changes" the position of the character
       //This is also changed in the run loop
-      this.posX = this.posX + 1 * this.speed;
-      this.posY = this.posY + 1 * this.speed;
+
+      if (!(this.posX + 1 * this.speed >= this.ctx.canvas.width)) {
+         this.posX = this.posX + 1 * this.speed;
+      }
+      else {
+         this.posX = this.ctx.canvas.width;
+      }
+      if (!(this.posY + 1 *this.speed >= this.ctx.canvas.height)) {
+         this.posY = this.posY + 1 * this.speed;
+      }
+      else {
+         this.posY = this.ctx.canvas.height;
+      }
+
    }
 }
 
@@ -87,7 +99,7 @@ window.onload = function() {
 
    //makes a character using the contructor.
    //We could add an array to keep track of all of the characters
-   var char1 = new Character("brad", 1, false, false, 1, 123, ctx, "#4274f4");
+   var char1 = new Character("brad", 1, false, false, 2, 123, ctx, "#4274f4");
    var char2 = new Character("rachel", 1, true, false, 5, 13, ctx, "#ffb73a");
 
    //Console log is how you would print
@@ -114,7 +126,7 @@ window.onload = function() {
       char1.update();
 
       char2.draw();
-      char2.draw();
+      char2.update();
    }
 
 
