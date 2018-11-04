@@ -1,5 +1,7 @@
 class Character {
    constructor(name, lvl, npc, inventory, speed, id, ctx) {
+      //The constructor is what makes the object.
+      //Each time you want a new one, you need to call a constructor
       this.name = name;
       this.lvl = lvl;
       this.npc = npc;
@@ -12,6 +14,7 @@ class Character {
    }
 
    draw() {
+      //This is where the character is being drawn in the run loop
       this.ctx.beginPath();
       this.ctx.fillStyle = this.color;
       this.ctx.arc(this.posX, this.posY, 5, 0, 2 * Math.PI, false);
@@ -22,14 +25,22 @@ class Character {
    }
 
    update() {
+      //This is what "changes" the position of the character
+      //This is also changed in the run loop
       this.posX = this.posX + 1;
       this.posY = this.posY + 1;
    }
+}
 
+function generateInitialMap() {
+   //place the map generation code here.
 
 }
 
+//This is the function that is called right when the window is Created
 window.onload = function() {
+   //Initialize the references to the buttons that we are using
+   //Notice that these are all caps, as caps represent globals
    var START_BUTTON = document.getElementById("startButton");
    var STOP_BUTTON = document.getElementById("stopButton");
    var STATS_BUTTON = document.getElementById("statsButton");
@@ -39,8 +50,9 @@ window.onload = function() {
    var DRAW_INTERVAL = 10;
 
 
+   //Used to check if the game is running
    var running = false;
-   var steps = 0;
+   //interval id
    var intID = -1;
 
 
@@ -48,15 +60,18 @@ window.onload = function() {
    START_BUTTON.onclick = function() {
       if (intID < 0) {
          if (running == false) {
+            //Call the run function
             run();
          }
          else {
+            //Has already been started, but need to set the interval again
             intID = setInterval(draw, DRAW_INTERVAL);
          }
       }
 
    };
 
+   //On click function for the Stop button
    STOP_BUTTON.onclick = function () {
       if (intID >= 0) {
          clearInterval(intID);
@@ -64,26 +79,35 @@ window.onload = function() {
       }
    };
 
+
    var ctx = CANVAS.getContext("2d");
 	var canvasWidth = CANVAS.width;
 	var canvasHeight = CANVAS.height;
+
+   //makes a character using the contructor.
+   //We could add an array to keep track of all of the characters
    var char1 = new Character("brad", 1, false, false, 1, 123, ctx);
 
+   //Console log is how you would print
    console.log("width = %d\n", canvasWidth);
    console.log("height = %d\n", canvasHeight);
 
+   //This function would be used to generate the initial map
+   generateInitialMap();
+
+   //This is the function for the run loop
    function run() {
       running = true;
       intID = setInterval(draw, DRAW_INTERVAL);
    }
 
+   //Here is the function that is called in the draw loop
    function draw() {
       ctx.globalCompositeOperator = "source-over";
       ctx.fillStyle = "white";
       ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
-      //console.log("DRAW STEPS = %d %d %d", steps, topWon, fitScore);
-
+      //Draw and update the character
       char1.draw();
       char1.update();
    }
