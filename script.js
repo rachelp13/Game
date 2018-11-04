@@ -45,8 +45,33 @@ class Character {
    }
 }
 
-function generateInitialMap() {
+function generateInitialMap(ctx) {
    //place the map generation code here.
+   ctx.fillStyle = "black"
+   ctx.lineWidth = 3;
+   ctx.strokestyle = "black";
+   ctx.fillRect(300, 0, 2, 300);
+   ctx.fillRect(300, 300, 200, 2);
+   ctx.fillRect(0, 350, 500, 2);
+   ctx.fillRect(500, 350, 2, 51);
+   ctx.fillRect(300,400,201, 2);
+   ctx.fillRect(300, 400, 2, 250);
+   ctx.fillRect(300, 638, 650, 2);
+   ctx.fillRect(950, 0, 2, 250);
+   ctx.fillRect(350, 0, 2, 250);
+   ctx.fillRect(350, 250, 150, 2);
+   ctx.fillRect(575, 250, 377, 2);
+   ctx.fillRect(500, 250, 2, 52);
+   ctx.fillRect(575, 250, 2, 150);
+   ctx.fillRect(575, 400, 377, 2);
+   ctx.fillRect(950, 400, 2, 250);
+   ctx.fillRect(0, 0, 300, 2);
+   ctx.fillRect(0, 0, 2, 350);
+   ctx.fillRect(350, 0, 600, 2);
+   
+
+
+
 
 }
 
@@ -67,7 +92,7 @@ window.onload = function() {
    var running = false;
    //interval id
    var intID = -1;
-
+   var ctx = CANVAS.getContext("2d");
 
 
    START_BUTTON.onclick = function() {
@@ -93,7 +118,7 @@ window.onload = function() {
    };
 
 
-   var ctx = CANVAS.getContext("2d");
+  
 	var canvasWidth = CANVAS.width;
 	var canvasHeight = CANVAS.height;
 
@@ -107,7 +132,7 @@ window.onload = function() {
    console.log("height = %d\n", canvasHeight);
 
    //This function would be used to generate the initial map
-   generateInitialMap();
+   generateInitialMap(ctx);
 
    //This is the function for the run loop
    function run() {
@@ -120,7 +145,9 @@ window.onload = function() {
       ctx.globalCompositeOperator = "source-over";
       ctx.fillStyle = "white";
       ctx.fillRect(0, 0, canvasWidth, canvasHeight);
-
+      
+      generateInitialMap(ctx);
+      
       //Draw and update the character
       char1.draw();
       char1.update();
